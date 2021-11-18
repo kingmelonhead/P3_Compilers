@@ -1,0 +1,17 @@
+this is line 1
+this is line 2
+
+
+this is line 4, line 3 is white space
+this line will have comments starting now:&&hello world&&:comments just ended&&this should never show up&&:more comments removed
+this line will start comments but not close them &&
+
+&
+
+this line should never show up 
+
+this line should also never show up
+
+&&
+
+this is line 17

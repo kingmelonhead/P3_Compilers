@@ -1,0 +1,21 @@
+Name: John Hackstadt
+Assignment: P2 (Parser)
+
+How to make:
+    make
+
+How to remove build files:
+    make clean
+
+
+How to run:
+    ./Parser someFile
+    *where someFile is just some file containing text*
+
+What program does:
+    builds a parse tree using the tokens from the scanner
+
+
+
+
+
