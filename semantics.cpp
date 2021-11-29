@@ -2,6 +2,7 @@
 #include <iostream>
 
 std::vector<std::string> vars;
+int global_count = 0;
 
 void semantics(tree_node * root){
     get_globals(root->child1);  // visit the vars node to get the global vars
@@ -41,6 +42,7 @@ void get_globals(tree_node * n){
     int temp = find(n->token1.token_string);
     if (temp == -1){
         vars.push_back(n->token1.token_string);
+        global_count++;
         std::cout << n->token1.token_string << " is being pushed to global vars\n";
     } 
     else {
@@ -112,7 +114,7 @@ int find(std::string str){
 }
 
 int find_locals(std::string str, int count){
-    for (int i = vars.size() - 1; i >= (vars.size() - count); i--){
+    for (int i = vars.size() - 1; i > global_count - 1; i--){
                 if (vars.at(i) == str){
             std::cout << "DEBUG: " << str << " has been found in vars\n";
             return (vars.size() - 1) - i;
