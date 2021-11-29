@@ -17,9 +17,18 @@ int main(int argc, char *argv[]){
     if (argc == 1) driver(filename, KEYBOARD);
     else if (argc == 2) driver(argv[1], SOURCE_FILE);
     else print_arg_error();
+
+    std::cout << "Scanner Finished!\n";
+
     tree_root = Parser();
+
+    std::cout << "Parser Finished!\n";
     //pre_order_traversal(tree_root, 0); //this is the printing 
     semantics(tree_root);
+
+    std::cout << "Static Semantics Finished!\n";
+
+    //code generation will go here
     return 0;
 }
 

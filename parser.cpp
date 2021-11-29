@@ -31,7 +31,7 @@ tree_node* Parser(){
 
     if (current_tk.token_type != EOF_Token) error(EOF_Token, current_tk.token_type);
 
-    std::cout << "Parser finished!\n";
+    //std::cout << "Parser finished!\n";
     return root;
 }
 
