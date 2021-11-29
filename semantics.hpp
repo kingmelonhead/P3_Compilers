@@ -16,7 +16,7 @@ void visit_block(tree_node *);
 void push(std::string);
 void pop();
 int find(std::string);
-int find_locals(std::string, int);
+int find_locals(std::string);
 
 
 #endif
