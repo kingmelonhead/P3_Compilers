@@ -3,6 +3,7 @@
 #include "testScanner.hpp"
 #include "tree.hpp"
 #include "node.hpp"
+#include "semantics.hpp"
 #include <iostream>
 
 void print_arg_error();
@@ -17,7 +18,8 @@ int main(int argc, char *argv[]){
     else if (argc == 2) driver(argv[1], SOURCE_FILE);
     else print_arg_error();
     tree_root = Parser();
-    pre_order_traversal(tree_root, 0);
+    //pre_order_traversal(tree_root, 0); //this is the printing 
+    semantics(tree_root);
     return 0;
 }
 

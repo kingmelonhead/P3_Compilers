@@ -1,5 +1,5 @@
 Name: John Hackstadt
-Assignment: P2 (Parser)
+Assignment: P3 (Semantics)
 
 How to make:
     make
@@ -9,11 +9,12 @@ How to remove build files:
 
 
 How to run:
-    ./Parser someFile
+    ./statSem someFile
     *where someFile is just some file containing text*
 
 What program does:
-    builds a parse tree using the tokens from the scanner
+    Checks that variables that are referenced in the code have been previously declared.
+    Also ensures that variables arent declared more than once in a given scope
 
 
 

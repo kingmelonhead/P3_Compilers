@@ -1,9 +1,12 @@
-&&p2g7 : conditional, will obviously need to have variants checking each relational operator &&
 declare y = 5 ;
 program
 start
-   if [ x { == } 0 ] then
+   if [ y { == } 0 ] then
    start
-      listen z ;
+      declare y = 2;
+      declare z = 9;
+      listen y ;
+      assign z = y;
    stop ;
+   talk y;
 stop
