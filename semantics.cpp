@@ -4,7 +4,10 @@
 std::vector<std::string> vars;
 int global_count = 0;
 
+bool debug = true;
+
 void semantics(tree_node * root){
+    //the driver function that gets called from the main cpp file
     get_globals(root->child1);  // visit the vars node to get the global vars
     visit_block(root->child2);  // start traversal in the program block
 }
@@ -43,10 +46,10 @@ void get_globals(tree_node * n){
     if (temp == -1){
         vars.push_back(n->token1.token_string);
         global_count++;
-        std::cout << n->token1.token_string << " is being pushed to global vars\n";
+        if (debug) std::cout << n->token1.token_string << " is being pushed to global vars\n";
     } 
     else {
-        std::cout << "in get_globals(): ";
+        if (debug) std::cout << "in get_globals(): ";
         double_dec(n->token1.token_string);
     }
     if (n->child1 != NULL) get_globals(n->child1);
@@ -62,7 +65,7 @@ void get_locals(tree_node * n, int & count){
         count++;
     }
     else {
-        std::cout << "in get_locals(): ";
+        if (debug) std::cout << "in get_locals(): ";
         double_dec(n->token1.token_string);
     } 
     if (n->child1 != NULL) get_locals(n->child1, count);
@@ -71,19 +74,20 @@ void get_locals(tree_node * n, int & count){
 
 void not_dec(std::string str){
     //identifier tries to be used but it has not been declared in the current scope
-    std::cout << "ERROR: " << str << " has been referenced but has not yet been declared in the current scope. Exiting program...\n";
+    if (debug) std::cout << "ERROR: " << str << " has been referenced but has not yet been declared in the current scope. Exiting program...\n";
     exit(0);
     return;
 }
 
 void double_dec(std::string str){
     //identifier tries to be declared but it has alredy been declared in the current scope
-    std::cout << "ERROR: " << str << " has been declared already in the current scope. Exiting program...\n";
+    if (debug) std::cout << "ERROR: " << str << " has been declared already in the current scope. Exiting program...\n";
     exit(0);
     return;
 }
 
 void visit_block(tree_node * n){
+    //this function is used when a new block is discovered
     int varCount = 0;
     get_locals(n->child1, varCount);
     if (n->child2 != NULL) traverse (n->child2);
@@ -91,22 +95,24 @@ void visit_block(tree_node * n){
 }
 
 void push(std::string str){
-    std::cout << "DEBUG: pushing " << str << "\n";
+    //pushes an ID to the stack
+    if (debug) std::cout << "DEBUG: pushing " << str << "\n";
     vars.push_back(str);
     return;
 }
 
 void pop(){
-    std::cout << "DEBUG: popping.\n";
+    //removes the top ID from the stack
+    if (debug) std::cout << "DEBUG: popping.\n";
     vars.pop_back();
     return;
 }
 
 int find(std::string str){
-    //look through locals
+    //look through all variables
     for (int i = vars.size() -1; i >= 0; i--){
         if (vars.at(i) == str){
-            std::cout << "DEBUG: " << str << " has been found in vars\n";
+            if (debug) std::cout << "DEBUG: " << str << " has been found in vars\n";
             return (vars.size() - 1) - i;
         } 
     }
@@ -114,9 +120,10 @@ int find(std::string str){
 }
 
 int find_locals(std::string str, int count){
+    //looks through the local variables
     for (int i = vars.size() - 1; i > global_count - 1; i--){
                 if (vars.at(i) == str){
-            std::cout << "DEBUG: " << str << " has been found in vars\n";
+            if (debug) std::cout << "DEBUG: " << str << " has been found in local vars\n";
             return (vars.size() - 1) - i;
         } 
     }
