@@ -1,11 +1,13 @@
-declare y = 5 ;
+
 program
 start
+   declare y = 1;
    declare a = 2;
    if [ y { == } 0 ] then
    start
-      declare y = 2;
+      declare c = 2;
       declare z = 9;
+      if [y == z] then talk y;;
       listen y ;
       listen a;
       assign z = y;

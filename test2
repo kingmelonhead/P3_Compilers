@@ -1,6 +1,16 @@
-&& p2g2 : has declaring of a variable &&
 declare x = 5 ;
 program
 start
-  listen x ;
+   start
+   declare y = 7 ;
+   declare dog = 12 ;
+   listen x ;
+
+   start
+      start
+         declare cat = 0 ;
+         jump dog ;
+      stop
+   stop
+   stop
 stop

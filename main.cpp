@@ -23,7 +23,9 @@ int main(int argc, char *argv[]){
     tree_root = Parser();
 
     std::cout << "Parser Finished!\n";
+    
     //pre_order_traversal(tree_root, 0); //this is the printing 
+    
     semantics(tree_root);
 
     std::cout << "Static Semantics Finished!\n";

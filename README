@@ -12,9 +12,15 @@ How to run:
     ./statSem someFile
     *where someFile is just some file containing text*
 
+    or 
+
+    ./statSem 
+    *this would use keyboard input
+
 What program does:
     Checks that variables that are referenced in the code have been previously declared.
-    Also ensures that variables arent declared more than once in a given scope
+    Also ensures that variables arent declared more than once in a given scope.
+    No more than 100 variables can be on the stack
 
 
 
