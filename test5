@@ -1,5 +1,3 @@
-&& p2g5 : first use of expression &&
-&& will want to test many more variations of expressions here &&
 declare x = 5 ;
 program
 start

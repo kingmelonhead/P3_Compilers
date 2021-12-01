@@ -4,7 +4,7 @@
 std::vector<std::string> vars;
 int global_count = 0;
 
-bool debug = true;
+bool debug = false;
 
 void semantics(tree_node * root){
     //the driver function that gets called from the main cpp file

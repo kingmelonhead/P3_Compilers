@@ -472,6 +472,6 @@ void error(tokenID expected, tokenID got){
 void print(std::string text){
 
     //print function used for debugging, commented out to disable it
-    //std::cout << text << std::endl;
+    std::cout << text << std::endl;
     return;
 }

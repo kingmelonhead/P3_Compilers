@@ -69,6 +69,7 @@ void driver(std::string filename, int mode){
             char_count = 0;
             for (int i = 0; i <= filter_len - 1; i++){     
                 char_count++;             //iterate over the filter, all logic for tokenization goes in here
+                if (filter_data.filter[i] == '\r' || filter_data.filter[i] == '\n') break;
                 current_column = get_col(filter_data.filter[i], line_no, char_count);
                 look_ahead = FSA_Table[state][current_column];
                 if (look_ahead == ERROR){                               //the character being evaluated here would lead to an error state, ie. we dont have a state that can deal with it
@@ -174,7 +175,7 @@ container refresh_filter(std::fstream &infile, int &line_no, bool & open_comment
             if (std::getline(std::cin, temp.filter)){     // gets line if not EOF
                 line_no++; 
                 temp.line_no = line_no; 
-                temp.filter += " ";
+                //temp.filter += " ";
                 remove_comments(temp.filter, open_comment);           // attempt to remove comments
                 if (!all_ws(temp.filter)) break;        // if filter is not empty after removing comments then filter is good           
             }

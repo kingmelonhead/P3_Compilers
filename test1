@@ -1,17 +1,16 @@
-
+declare x = 5 ;
 program
 start
-   declare y = 1;
-   declare a = 2;
-   if [ y { == } 0 ] then
    start
-      declare c = 2;
-      declare z = 9;
-      if [y == z] then talk y;;
-      listen y ;
-      listen a;
-      assign z = y;
-   stop ;
-   listen a;
-   talk y;
+      declare y = 7 ;
+      declare x = 8 ;
+      label x ;
+      listen x ;
+   stop
+   start
+      start
+         declare y = 0 ;
+         jump y ;
+      stop
+   stop
 stop
