@@ -185,7 +185,7 @@ tree_node* R(){
         current_tk = Scanner();
     }
     else {
-        print("was expecting ( <expr> ) | Identifier | Integer but got " + TKNames[current_tk.token_type]);
+        std::cout << "was expecting ( <expr> ) | Identifier | Integer but got "  << TKNames[current_tk.token_type] << std::endl;
     }
 
     print("r validated");
@@ -230,7 +230,7 @@ tree_node* STAT(){
     else if (current_tk.token_type == jump_tk) temp->child1 = GOTO();
     else if (current_tk.token_type == label_tk) temp->child1 = LABEL();
     else {
-        print("error in STAT(): expecting { listen | talk  | start | if  | while | declare | jump | label } but got " + TKNames[current_tk.token_type]);
+        std::cout << "error in STAT(): expecting { listen | talk  | start | if  | while | declare | jump | label } but got "  << TKNames[current_tk.token_type];
         exit(0);
     }
 
@@ -414,7 +414,7 @@ tree_node* RO(){
         current_tk = Scanner();
     }
     else {
-        print("expected { >  | < |  ==  |   { == } | '%' } and got " + TKNames[current_tk.token_type]);
+        std::cout << "expected { >  | < |  ==  |   { == } | '%' } and got "  << TKNames[current_tk.token_type] << "\n";
         exit(0);
     }
 
@@ -472,6 +472,6 @@ void error(tokenID expected, tokenID got){
 void print(std::string text){
 
     //print function used for debugging, commented out to disable it
-    std::cout << text << std::endl;
+    //std::cout << text << std::endl;
     return;
 }
