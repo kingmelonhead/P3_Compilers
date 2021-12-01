@@ -4,8 +4,6 @@
 #include "token.hpp"
 #include <vector>
 
-
-
 void testScanner();
 
 #endif
